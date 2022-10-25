@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Star Rating</title>
+    <style>
+        .stars-outer{
+            display: inline-block;
+            position: relative;
+            font-size: 1.5rem;
+        }
+        .stars-inner{
+            position: absolute;
+            top: 0;
+            left: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>4K Television</th>
+                    <th> Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="sony">
+                    <td>Sony 4K TV</td>
+                    <td>
+                        <div class="stars-outer">
+                            <div class="stars-inner"></div>
+                        </div>
+                        <span class="number-rating"></span>
+                    </td>
+                </tr>
+                <tr class="samsung">
+                    <td>Samsung 4K TV</td>
+                    <td>
+                        <div class="stars-outer">
+                            <div class="stars-inner"></div>
+                        </div>
+                        <span class="number-rating"></span>
+                    </td>
+                </tr>
+                <tr class="vizio">
+                    <td>Vizio 4K TV</td>
+                    <td>
+                        <div class="stars-outer">
+                            <div class="stars-inner"></div>
+                        </div>
+                        <span class="number-rating"></span>
+                    </td>
+                </tr>
+                <tr class="panasonic">
+                    <td>Panasonic 4K TV</td>
+                    <td>
+                        <div class="stars-outer">
+                            <div class="stars-inner"></div>
+                        </div>
+                        <span class="number-rating"></span>
+                    </td>
+                </tr>
+                <tr class="phillips">
+                    <td>Phillips 4K TV</td>
+                    <td>
+                        <div class="stars-outer">
+                            <div class="stars-inner"></div>
+                        </div>
+                        <span class="number-rating"></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        //Initial Ratings
+        const ratings={
+            sony:4.7,
+            samsung:3.4,
+            vizio:2.3,
+            panasonic:3.6,
+            phillips:4.1
+        }
+        //Total Stars
+        const starsTotal=5;
+        //Run getRatings when DOM loads
+        document.addEventListener('DOMContentLoaded',getRatings);
+
+        //Get ratings
+        function getRatings(){
+            for(let rating in ratings)
+            {
+               //get percentage
+               const starPercentage=(ratings[rating]/starsTotal)*100;
+               //round to nearest 10
+               const starPercentageRounded=`${Math.round(starPercentage/10)*10}%`;
+               //set width of stars-inner to percentage
+               document.querySelector(`.${rating} .stars-inner`).style.width=starPercentageRounded;
+            }
+            
+        }
+    </script>
+</body>
+</html>
